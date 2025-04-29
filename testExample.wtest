@@ -1,9 +1,26 @@
-import example.pepita
+import mensajeros.*
+ 
+describe "contratar a neo"{
+    empresaMensajeria.contratar(Neo)
+    assert.that(empresaMensajeria.mensanjeros())
+}
 
-describe "group of tests for pepita" {
+test "neo fue despedido"{
+    empresaMensajeria.despedir(Neo)
+    assert.notThat(empresaMensajeria.mensajeros().contains(Neo))
+}
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
+test "no es grande mensajeria" {
+    assert.notThat(empresaMensajeria.esGrande())
+}
 
+test "agrego a chuck  y roberto ahora es grande" {
+    empresaMensajeria.contratar(ChukNorris)
+    empresaMensajeria.contratar(Roberto)
+    assert.that(empresaMensajeria.esGrande())
+}
+
+test "entregar paquete con neo"{
+    paquete.pagarPaquete()
+    assert.that(empresaMensajeria.puedeEntregarsePaquete())
 }
